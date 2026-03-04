@@ -58,9 +58,34 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView(
+                children: [
+                  foodItem("Pizza", "assets/pizza.png"),
+                  foodItem("Burger", "assets/burger.png"),
+                  foodItem("Biryani", "assets/biryani.png"),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+Widget foodItem(String title, String imagePath) {
+  return Card(
+    margin: const EdgeInsets.only(bottom: 16),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: ListTile(
+      leading: const Icon(Icons.fastfood, size: 30),
+      title: Text(title),
+      subtitle: const Text("Delicious and fresh"),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+    ),
+  );
 }
