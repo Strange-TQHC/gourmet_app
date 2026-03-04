@@ -26,10 +26,39 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Gourmet"),
       ),
-      body: const Center(
-        child: Text(
-          "Welcome to Gourmet App",
-          style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Hey there!!",
+              style: TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              "What would you like to eat?",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const TextField(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.search),
+                  hintText: "Search food...",
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
