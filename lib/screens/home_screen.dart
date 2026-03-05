@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/food_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Hey there 👋",
+              "Hey there!!",
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 8),
@@ -43,12 +44,13 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                children: [
-                  foodItem("Pizza"),
-                  foodItem("Burger"),
-                  foodItem("Biryani"),
-                ],
+              child: ListView.builder(
+                itemCount: foodItems.length,
+                itemBuilder: (context, index) {
+                  final food = foodItems[index];
+
+                  return foodItem(food);
+                },
               ),
             ),
           ],
@@ -57,7 +59,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget foodItem(String title) {
+  Widget foodItem(Food food) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       shape: RoundedRectangleBorder(
@@ -65,9 +67,12 @@ class HomeScreen extends StatelessWidget {
       ),
       child: ListTile(
         leading: const Icon(Icons.fastfood, size: 30),
-        title: Text(title),
-        subtitle: const Text("Delicious and fresh"),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        title: Text(food.name),
+        subtitle: Text(food.description),
+        trailing: Text(
+          "₹${food.price}",
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
