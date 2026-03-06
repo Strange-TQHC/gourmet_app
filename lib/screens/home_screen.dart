@@ -71,16 +71,32 @@ class HomeScreen extends StatelessWidget {
         leading: const Icon(Icons.fastfood, size: 30),
         title: Text(food.name),
         subtitle: Text(food.description),
-        trailing: IconButton(
-          icon: const Icon(Icons.add_shopping_cart),
-          onPressed: () {
-            Provider.of<CartProvider>(context, listen: false)
-                .addToCart(food);
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("${food.name} added to cart")),
-            );
-          },
+            Text(
+              "₹${food.price}",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 4),
+
+            IconButton(
+              icon: const Icon(Icons.add_shopping_cart, size: 18),
+              onPressed: () {
+
+                Provider.of<CartProvider>(context, listen: false)
+                    .addToCart(food);
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("${food.name} added to cart")),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
