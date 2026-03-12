@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "751024255394",
+    "project_id": "gourmetapp-78d8a",
+    "storage_bucket": "gourmetapp-78d8a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751024255394:android:72c392b833bdcee5a6c2fb",
+        "android_client_info": {
+          "package_name": "com.example.gourmet_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASfWoczwsjLya5cd4-ZSgQibBCV2Hcs2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
