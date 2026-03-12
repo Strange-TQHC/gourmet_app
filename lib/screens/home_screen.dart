@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/food_model.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
+import 'food_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -62,43 +63,57 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget foodItem(BuildContext context, Food food) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: ListTile(
-        leading: const Icon(Icons.fastfood, size: 30),
-        title: Text(food.name),
-        subtitle: Text(food.description),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+    return InkWell(
 
-            Text(
-              "₹${food.price}",
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+      onTap: () {
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FoodDetailsScreen(food: food),
+          ),
+        );
+
+      },
+
+        child: Card(
+          margin: const EdgeInsets.only(bottom: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: ListTile(
+            leading: const Icon(Icons.fastfood, size: 30),
+            title: Text(food.name),
+            subtitle: Text(food.description),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+
+                Text(
+                  "₹${food.price}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                const SizedBox(height: 4),
+
+                IconButton(
+                  icon: const Icon(Icons.add_shopping_cart, size: 18),
+                  onPressed: () {
+
+                    Provider.of<CartProvider>(context, listen: false)
+                        .addToCart(food);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("${food.name} added to cart")),
+                    );
+                  },
+                ),
+              ],
             ),
-
-            const SizedBox(height: 4),
-
-            IconButton(
-              icon: const Icon(Icons.add_shopping_cart, size: 18),
-              onPressed: () {
-
-                Provider.of<CartProvider>(context, listen: false)
-                    .addToCart(food);
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("${food.name} added to cart")),
-                );
-              },
-            ),
-          ],
+          ),
         ),
-      ),
     );
   }
 }
