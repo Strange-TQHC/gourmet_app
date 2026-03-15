@@ -21,79 +21,93 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Gourmet"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Hey there!!",
-              style: TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              "What would you like to eat?",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+
+              const Text(
+                "Hey there!!",
+                style: TextStyle(fontSize: 18),
               ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.search),
-                  hintText: "Search food...",
-                  border: InputBorder.none,
+
+              const SizedBox(height: 8),
+
+              const Text(
+                "What would you like to eat?",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-            SizedBox(
-              height: 40,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-
-                  final category = categories[index];
-
-                  return Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.orange.shade100,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      category,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  );
-                },
+              // SEARCH BAR
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.search),
+                    hintText: "Search food...",
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
-            ),
 
-            sectionTitle("Popular Foods"),
-            Expanded(
-              child: ListView.builder(
+              const SizedBox(height: 20),
+
+              // CATEGORIES
+              SizedBox(
+                height: 40,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+
+                    final category = categories[index];
+
+                    return Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.orange.shade100,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        category,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+              sectionTitle("Popular Foods"),
+
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: foodItems.length,
                 itemBuilder: (context, index) {
+
                   final food = foodItems[index];
 
                   return foodItem(context, food);
                 },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
