@@ -127,57 +127,116 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget foodItem(BuildContext context, Food food) {
+
     return InkWell(
 
       onTap: () {
-
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => FoodDetailsScreen(food: food),
           ),
         );
-
       },
 
-        child: Card(
-          margin: const EdgeInsets.only(bottom: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: ListTile(
-            leading: const Icon(Icons.fastfood, size: 30),
-            title: Text(food.name),
-            subtitle: Text(food.description),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 18),
 
-                Text(
-                  "₹${food.price}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            )
+          ],
+        ),
+
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+
+          child: Row(
+
+            children: [
+
+              /// FOOD IMAGE PLACEHOLDER
+              Container(
+                height: 70,
+                width: 70,
+
+                decoration: BoxDecoration(
+                  color: Colors.orange.shade100,
+                  borderRadius: BorderRadius.circular(12),
                 ),
 
-                const SizedBox(height: 4),
-
-                IconButton(
-                  icon: const Icon(Icons.add_shopping_cart, size: 18),
-                  onPressed: () {
-
-                    Provider.of<CartProvider>(context, listen: false)
-                        .addToCart(food);
-
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("${food.name} added to cart")),
-                    );
-                  },
+                child: const Icon(
+                  Icons.fastfood,
+                  size: 35,
                 ),
-              ],
-            ),
+              ),
+
+              const SizedBox(width: 12),
+
+              /// FOOD INFO
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    Text(
+                      food.name,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 4),
+
+                    Text(
+                      food.description,
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 13,
+                      ),
+                    ),
+
+                    const SizedBox(height: 6),
+
+                    Text(
+                      "₹${food.price}",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              /// ADD BUTTON
+              IconButton(
+                icon: const Icon(
+                  Icons.add_circle,
+                  color: Colors.orange,
+                  size: 28,
+                ),
+                onPressed: () {
+
+                  Provider.of<CartProvider>(context, listen: false)
+                      .addToCart(food);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("${food.name} added to cart")),
+                  );
+                },
+              ),
+            ],
           ),
         ),
+      ),
     );
   }
 }
