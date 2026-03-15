@@ -4,6 +4,14 @@ import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import 'food_details_screen.dart';
 
+const List<String> categories = [
+  "Pizza",
+  "Burger",
+  "Biryani",
+  "Dessert",
+  "Drinks"
+];
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -45,6 +53,35 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+
+            const SizedBox(height: 20),
+
+            SizedBox(
+              height: 40,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+
+                  final category = categories[index];
+
+                  return Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade100,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      category,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  );
+                },
+              ),
+            ),
+
             const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
