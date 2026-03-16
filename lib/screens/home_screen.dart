@@ -284,7 +284,11 @@ class HomeScreen extends StatelessWidget {
                       .addToCart(food);
 
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("${food.name} added to cart")),
+                    SnackBar(
+                      content: Text("${food.name} added to cart"),
+                      duration: const Duration(seconds: 1),
+                      behavior: SnackBarBehavior.floating,
+                    ),
                   );
                 },
               ),
