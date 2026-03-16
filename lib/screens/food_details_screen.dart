@@ -47,36 +47,6 @@ class FoodDetailsScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 4),
-
-            Row(
-              children: [
-
-                const Icon(
-                  Icons.star,
-                  size: 14,
-                  color: Colors.orange,
-                ),
-
-                const SizedBox(width: 4),
-
-                Text(
-                  food.rating.toString(),
-                  style: const TextStyle(fontSize: 12),
-                ),
-
-                const SizedBox(width: 6),
-
-                Text(
-                  "• ${food.deliveryTime}m",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                  ),
-                ),
-              ],
-            ),
-
             const SizedBox(height: 10),
 
             Text(

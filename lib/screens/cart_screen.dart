@@ -21,38 +21,119 @@ class CartScreen extends StatelessWidget {
       )
           : Column(
         children: [
-
           Expanded(
             child: ListView.builder(
+              padding: const EdgeInsets.all(16), // Padding for the list
               itemCount: cart.items.length,
               itemBuilder: (context, index) {
-
                 final item = cart.items[index];
-
-                return ListTile(
-                  title: Text(item.name),
-                  subtitle: Text("₹${item.price}"),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () {
-                      cart.removeFromCart(item);
-                    },
-                  ),
-                );
+                // Using the styled widget here
+                return _buildCartItem(context, item);
               },
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              "Total: ₹${cart.totalPrice}",
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+          // Total Price Section
+          Container(
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, -5),
+                )
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Total:",
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
+                ),
+                Text(
+                  "₹${cart.totalPrice}",
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                  ),
+                ),
+              ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  /// The Styled Cart Item Widget
+  Widget _buildCartItem(BuildContext context, dynamic food) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          )
+        ],
+      ),
+      child: Row(
+        children: [
+          /// FOOD IMAGE PLACEHOLDER
+          Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              color: Colors.orange.shade100,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(Icons.fastfood, color: Colors.orange),
+          ),
+
+          const SizedBox(width: 12),
+
+          /// FOOD INFO
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  food.name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  "₹${food.price}",
+                  style: const TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          /// DELETE BUTTON
+          IconButton(
+            icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+            onPressed: () {
+              // Standard practice: listen: false inside buttons
+              Provider.of<CartProvider>(context, listen: false)
+                  .removeFromCart(food);
+            },
+          ),
         ],
       ),
     );

@@ -161,7 +161,6 @@ class HomeScreen extends StatelessWidget {
           ),
         );
       },
-
       child: Container(
         margin: const EdgeInsets.only(bottom: 18),
 
