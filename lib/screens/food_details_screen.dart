@@ -23,17 +23,19 @@ class FoodDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.orange.shade100,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const Icon(
-                Icons.fastfood,
-                size: 100,
+            Hero(
+              tag: food.name,
+              child: Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.orange.shade100,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Icon(
+                  Icons.fastfood,
+                  size: 100,
+                ),
               ),
             ),
 

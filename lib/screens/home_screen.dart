@@ -183,19 +183,22 @@ class HomeScreen extends StatelessWidget {
 
             children: [
 
-              /// FOOD IMAGE PLACEHOLDER
-              Container(
-                height: 70,
-                width: 70,
+              /// UPDATED FOOD IMAGE WITH HERO
 
-                decoration: BoxDecoration(
-                  color: Colors.orange.shade100,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-
-                child: const Icon(
-                  Icons.fastfood,
-                  size: 35,
+              Hero(
+                tag: food.name,
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.orange.shade100,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Icon(
+                    Icons.fastfood,
+                    size: 35,
+                    color: Colors.orange, // Added color for a better look
+                  ),
                 ),
               ),
 
