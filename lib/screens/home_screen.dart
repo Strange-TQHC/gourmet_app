@@ -195,6 +195,36 @@ class HomeScreen extends StatelessWidget {
 
                     const SizedBox(height: 4),
 
+                    Row(
+                      children: [
+
+                        const Icon(
+                          Icons.star,
+                          color: Colors.orange,
+                          size: 16,
+                        ),
+
+                        const SizedBox(width: 4),
+
+                        Text(
+                          food.rating.toString(),
+                          style: const TextStyle(fontSize: 13),
+                        ),
+
+                        const SizedBox(width: 8),
+
+                        Text(
+                          "• ${food.deliveryTime} min",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey.shade600,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 4),
+
                     Text(
                       food.description,
                       style: TextStyle(
