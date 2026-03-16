@@ -205,24 +205,24 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(12),
 
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
 
               /// UPDATED FOOD IMAGE WITH HERO
-
               Hero(
                 tag: food.name,
                 child: Container(
-                  height: 70,
-                  width: 70,
+                  height: 180,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     color: AppColors.tertiary,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Icon(
                     Icons.fastfood,
-                    size: 35,
+                    size: 80,
                     color: AppColors.primary, // Added color for a better look
                   ),
                 ),
@@ -231,91 +231,102 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(width: 12),
 
               /// FOOD INFO
-              Expanded(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Text(
                       food.name,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
                     const SizedBox(height: 4),
 
+                    /// DESCRIPTION
+                    Text(
+                      food.description,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 14,
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    /// RATING & TIME
                     Row(
                       children: [
-
                         const Icon(
-                          Icons.star,
-                          color: AppColors.primary,
-                          size: 16,
+                            Icons.star,
+                            color: AppColors.primary,
+                            size: 23
                         ),
 
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 2),
 
                         Text(
                           food.rating.toString(),
-                          style: const TextStyle(fontSize: 13),
+                          style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
+                          ),
                         ),
-
-                        const SizedBox(width: 8),
-
+                        const SizedBox(width: 12),
                         Text(
                           "•  ${food.deliveryTime} min",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
                             color: Colors.grey.shade600,
                           ),
                         ),
                       ],
                     ),
 
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 8),
 
-                    Text(
-                      food.description,
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 13,
-                      ),
-                    ),
+                    /// BOTTOM ROW: PRICE & ADD BUTTON
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "₹${food.price}",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.black87,
+                          ),
+                        ),
 
-                    const SizedBox(height: 6),
-
-                    Text(
-                      "₹${food.price}",
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
+                        // Add Button
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          icon: const Icon(
+                            Icons.add_circle,
+                            color: AppColors.primary,
+                            size: 32,
+                          ),
+                          onPressed: () {
+                            Provider.of<CartProvider>(context, listen: false).addToCart(food);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("${food.name} added to cart"),
+                                duration: const Duration(seconds: 1),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ),
-
-              /// ADD BUTTON
-              IconButton(
-                icon: const Icon(
-                  Icons.add_circle,
-                  color: AppColors.primary,
-                  size: 28,
-                ),
-                onPressed: () {
-                  Provider.of<CartProvider>(context, listen: false)
-                      .addToCart(food);
-
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("${food.name} added to cart"),
-                      duration: const Duration(seconds: 1),
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
-                },
               ),
             ],
           ),
