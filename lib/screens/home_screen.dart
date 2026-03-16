@@ -65,10 +65,19 @@ class HomeScreen extends StatelessWidget {
               // SEARCH BAR
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
+
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    )
+                  ],
                 ),
+
                 child: const TextField(
                   decoration: InputDecoration(
                     icon: Icon(Icons.search),
