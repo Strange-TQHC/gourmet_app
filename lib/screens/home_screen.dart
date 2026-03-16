@@ -12,8 +12,27 @@ const List<String> categories = [
   "Drinks"
 ];
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +115,6 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
-
                     final category = categories[index];
 
                     return Container(
@@ -118,12 +136,13 @@ class HomeScreen extends StatelessWidget {
 
               sectionTitle("Popular Foods"),
 
-              ListView.builder(
+              isLoading
+                  ? skeletonList()
+                  : ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: foodItems.length,
                 itemBuilder: (context, index) {
-
                   final food = foodItems[index];
 
                   return foodItem(context, food);
@@ -150,7 +169,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget foodItem(BuildContext context, Food food) {
-
     return InkWell(
 
       onTap: () {
@@ -279,7 +297,6 @@ class HomeScreen extends StatelessWidget {
                   size: 28,
                 ),
                 onPressed: () {
-
                   Provider.of<CartProvider>(context, listen: false)
                       .addToCart(food);
 
@@ -298,4 +315,74 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget skeletonCard() {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 18),
+      padding: const EdgeInsets.all(12),
+
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+
+      child: Row(
+        children: [
+
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+
+          const SizedBox(width: 12),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Container(
+                  height: 14,
+                  width: 120,
+                  color: Colors.grey.shade300,
+                ),
+
+                const SizedBox(height: 8),
+
+                Container(
+                  height: 12,
+                  width: 80,
+                  color: Colors.grey.shade300,
+                ),
+
+                const SizedBox(height: 8),
+
+                Container(
+                  height: 12,
+                  width: 150,
+                  color: Colors.grey.shade300,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget skeletonList() {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return skeletonCard();
+      },
+    );
+  }
+
 }
