@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/food_model.dart';
 import '../providers/cart_provider.dart';
+import '../themes/app_colors.dart';
 
 class FoodDetailsScreen extends StatelessWidget {
 
@@ -29,7 +30,7 @@ class FoodDetailsScreen extends StatelessWidget {
                 height: 200,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade100,
+                  color: AppColors.tertiary,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Icon(

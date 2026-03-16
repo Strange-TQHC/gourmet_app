@@ -3,6 +3,7 @@ import '../models/food_model.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import 'food_details_screen.dart';
+import '../themes/app_colors.dart';
 
 const List<String> categories = [
   "Pizza",
@@ -39,14 +40,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text("Gourmet"),
+        title: const Text(
+          "Gourmet",
+          style: TextStyle(
+            fontFamily: "GourmetFont",
+            fontSize: 48,
+            color: Colors.white,
+          ),
+        ),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xFFFF6B00),
-                Color(0xFFFFA726),
+                AppColors.primary,
+                AppColors.secondary,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -121,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       margin: const EdgeInsets.only(right: 10),
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
-                        color: Colors.orange.shade100,
+                        color: AppColors.tertiary,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       alignment: Alignment.center,
@@ -209,13 +217,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 70,
                   width: 70,
                   decoration: BoxDecoration(
-                    color: Colors.orange.shade100,
+                    color: AppColors.tertiary,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Icon(
                     Icons.fastfood,
                     size: 35,
-                    color: Colors.orange, // Added color for a better look
+                    color: AppColors.primary, // Added color for a better look
                   ),
                 ),
               ),
@@ -243,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         const Icon(
                           Icons.star,
-                          color: Colors.orange,
+                          color: AppColors.primary,
                           size: 16,
                         ),
 
@@ -257,7 +265,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(width: 8),
 
                         Text(
-                          "• ${food.deliveryTime} min",
+                          "•  ${food.deliveryTime} min",
                           style: TextStyle(
                             fontSize: 13,
                             color: Colors.grey.shade600,
@@ -293,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 icon: const Icon(
                   Icons.add_circle,
-                  color: Colors.orange,
+                  color: AppColors.primary,
                   size: 28,
                 ),
                 onPressed: () {
@@ -384,5 +392,4 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
 }

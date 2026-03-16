@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
+import '../themes/app_colors.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -81,7 +82,7 @@ class CartScreen extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.orange,
+                    color: AppColors.primary,
                   ),
                 ),
               ],
@@ -115,10 +116,10 @@ class CartScreen extends StatelessWidget {
             height: 60,
             width: 60,
             decoration: BoxDecoration(
-              color: Colors.orange.shade100,
+              color: AppColors.tertiary,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(Icons.fastfood, color: Colors.orange),
+            child: const Icon(Icons.fastfood, color: AppColors.primary),
           ),
 
           const SizedBox(width: 12),
@@ -139,7 +140,7 @@ class CartScreen extends StatelessWidget {
                 Text(
                   "₹${food.price}",
                   style: const TextStyle(
-                    color: Colors.orange,
+                    color: AppColors.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
