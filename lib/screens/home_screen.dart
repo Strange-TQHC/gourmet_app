@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: Colors.transparent,
         title: const Text(
           "Gourmet",
           style: TextStyle(
@@ -58,6 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(90),
             ),
           ),
         ),
