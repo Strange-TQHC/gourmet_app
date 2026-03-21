@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../themes/app_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -25,8 +26,12 @@ class ProfileScreen extends StatelessWidget {
 
               CircleAvatar(
                 radius: 35,
-                backgroundColor: Colors.orange.shade100,
-                child: const Icon(Icons.person, size: 35),
+                backgroundColor: AppColors.tertiary,
+                child: const Icon(
+                    Icons.person,
+                    size: 35,
+                    color: AppColors.textDark,
+                ),
               ),
 
               const SizedBox(width: 16),

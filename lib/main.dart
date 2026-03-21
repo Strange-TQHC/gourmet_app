@@ -5,7 +5,7 @@ import 'screens/auth/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/cart_provider.dart';
 import 'screens/main_screen.dart';
-
+import 'providers/user_provider.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +13,11 @@ void main() async {
   await Firebase.initializeApp();
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CartProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
       child: const MyApp(),
     ),
   );
