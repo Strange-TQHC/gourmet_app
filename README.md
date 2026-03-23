@@ -95,14 +95,14 @@ flutter run
 
 ## 📸 Screenshots
 
-![Login](screenshots/Gourmet_Login_Screen.jpg)
-![Signup](screenshots/Gourmet_Signup_Screen.jpg)
-![Home](screenshots/Gourmet_Home_Screen.jpg)
-![Food Details](screenshots/Gourmet_Food_Details_Screen.jpg)
-![Cart](screenshots/Gourmet_Cart_Screen.jpg)
-![Orders](screenshots/Gourmet_Orders_Screen.jpg)
-![Profile](screenshots/Gourmet_Profile_Screen.jpg)
-![Edit Profile](screenshots/Gourmet_Edit_Profile_Screen.jpg)
+![Login](assets/screenshots/Gourmet_Login_Screen.jpg)
+![Signup](assets/screenshots/Gourmet_Signup_Screen.jpg)
+![Home](assets/screenshots/Gourmet_Home_Screen.jpg)
+![Food Details](assets/screenshots/Gourmet_Food_Details_Screen.jpg)
+![Cart](assets/screenshots/Gourmet_Cart_Screen.jpg)
+![Orders](assets/screenshots/Gourmet_Orders_Screen.jpg)
+![Profile](assets/screenshots/Gourmet_Profile_Screen.jpg)
+![Edit Profile](assets/screenshots/Gourmet_Edit_Profile_Screen.jpg)
 
 ---
 
