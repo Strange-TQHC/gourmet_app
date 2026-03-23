@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import '../themes/app_colors.dart';
+import '../themes/app_colors.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -13,7 +14,36 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Cart"),
+        toolbarHeight: 70,
+        title: Row(
+          children: [
+            const Text(
+              "My Cart",
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Container(
+                height: 10,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.primary,
+                      AppColors.secondary,
+                    ],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
 
       body: cart.items.isEmpty

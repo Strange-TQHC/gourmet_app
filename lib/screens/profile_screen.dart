@@ -4,6 +4,7 @@ import '../themes/app_colors.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
 import 'edit_profile_screen.dart';
+import '../themes/app_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -16,7 +17,36 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        toolbarHeight: 70,
+        title: Row(
+          children: [
+            const Text(
+              "Profile",
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Container(
+                height: 10,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.primary,
+                      AppColors.secondary,
+                    ],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
 
       body: ListView(
