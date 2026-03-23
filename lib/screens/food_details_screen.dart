@@ -85,7 +85,19 @@ class FoodDetailsScreen extends StatelessWidget {
                   );
                 },
 
-                child: const Text("Add to Cart"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange.shade100,
+                  foregroundColor: Colors.black,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                    "Add to Cart",
+                    style: TextStyle(fontSize: 16,
+                    fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ],
