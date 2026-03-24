@@ -73,27 +73,38 @@ Designed to demonstrate clean UI/UX, state management, and real-world app struct
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 1. Clone the repository
+
+```bash
 git clone https://github.com/Strange-TQHC/gourmet_app.git
+```
 
 2. Navigate to project folder
+
+```bash
 cd gourmet
+```
 
 3. Install dependencies
+
+```bash
 flutter pub get
+```
 
 4. Add Firebase config
 - Place `google-services.json` inside `android/app/`
 
 5. Run the app
-flutter run
 
+```bash
+flutter run
+```
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ![Login](assets/screenshots/Gourmet_Login_Screen.jpg)
 ![Signup](assets/screenshots/Gourmet_Signup_Screen.jpg)
@@ -106,7 +117,7 @@ flutter run
 
 ---
 
-## 💡 Future Improvements
+## Future Improvements
 
 - Food images integration
 - Order history with Firebase Firestore
@@ -116,10 +127,10 @@ flutter run
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-KAUSHIK KALYAN BOJJA
-Flutter Developer
+**KAUSHIK KALYAN BOJJA**
+*Flutter Developer*
 
 ---
 
